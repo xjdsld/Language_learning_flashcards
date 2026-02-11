@@ -1,4 +1,5 @@
 import sqlite3
+from session import Card
 
 class Database:
     def __init__(self):
@@ -21,5 +22,13 @@ class Database:
         translation = row[1]
         sentence = row[2]
         return Card(word, translation, sentence)
+
+    def add_card(self):
+        self.cursor.execute("""INSERT INTO words (words, translation, sentence) VALUES (?, ?, ?)""", (card.word, card.translation, card.sentence))
+        self.connection.commit()
+
+    def get_all_cards(self):
+        self.cursor.execute("SELECT * FROM words")
+        return self.cursor.fetchall
 
         
