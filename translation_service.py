@@ -1,10 +1,9 @@
 import requests
-from session import Card
 
 class Translation():
-    def translation(self):
+    def translation(self, word):
      url = ""
-     params = {"q": self.word, "langpair": "en|uk"}
+     params = {"q": word, "langpair": "en|uk"}
      response = requests.get(url, params=params)
      data = response.json()
      return data["responseData"]["translatedText"]
