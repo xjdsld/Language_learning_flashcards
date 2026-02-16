@@ -1,4 +1,11 @@
+from database import Database
+from session import Card
+from translation_service import Translation
+
+
 def menu():
+    database = Database()
+    database.create_db()
     print("======Welcome to the Main Menu=======")
     print("To start a new learning session press - 1")
     print("To add a new word press - 2")
