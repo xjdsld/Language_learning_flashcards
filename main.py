@@ -20,7 +20,6 @@ def menu():
                 print(f"Example: {card.sentence}")
 
        elif user_choice == 2:
-           elif user_choice == 2:
                 word = input("Enter English word: ")
                 translation = translation.translate(word)
                 sentence = input("Enter example sentence: ")
