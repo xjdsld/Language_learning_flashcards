@@ -31,3 +31,6 @@ def menu():
            print("Please enter either 1 or 2")
     except ValueError:
         print("Please enter a number")
+
+if __name__ == "__main__":
+    menu()
