@@ -1,6 +1,10 @@
+import logging
 from database import Database
 from session import Card
 from translation_service import Translation
+
+logger = logging.getLogger(__name__)
+
 
 def menu():
     database = Database()
