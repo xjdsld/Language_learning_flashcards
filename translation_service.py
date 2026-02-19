@@ -1,4 +1,7 @@
 import requests
+import logging
+
+
 
 class Translation():
     def translation(self, word):
