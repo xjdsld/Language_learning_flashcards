@@ -1,5 +1,8 @@
 import sqlite3
+import logging
 from session import Card
+
+logger = logging.getLogger(__name__)
 
 class Database:
     def __init__(self):
