@@ -1,3 +1,7 @@
+import logging 
+
+logger = logging.getLogger(__name__)
+
 class Card:
     def __init__(self, word, translation, sentence):
         self.word = word
