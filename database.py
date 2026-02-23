@@ -39,7 +39,7 @@ class Database:
             raise
 
     def get_all_cards(self):
-        self.cursor.execute("SELECT * FROM words")
+        self.cursor.execute("SELECT word, translation, sentence FROM words")
+    
         return self.cursor.fetchall()
-
         
