@@ -1,4 +1,5 @@
 import logging
+import random
 from database import Database
 from session import Card
 from translation_service import Translation
