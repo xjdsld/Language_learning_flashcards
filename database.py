@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import random
 from session import Card
 
 logger = logging.getLogger(__name__)
@@ -16,12 +17,13 @@ class Database:
 
     def create_card(self):
         self.cursor.execute("SELECT word, translation, sentence FROM words")
-        row = self.cursor.fetchone()
-        if row is None:
+        rows = self.cursor.fetchall()
+        if not rows:
             logger.warning("No words found in the database to create a card.")
             print("No words to learn")
             return None
             
+        row = random.choice(rows)
         word = row[0]
         translation = row[1]
         sentence = row[2]
