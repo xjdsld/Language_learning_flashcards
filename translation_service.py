@@ -1,5 +1,5 @@
 import requests
-import logging
+import logging_set
 
 logger = logging.getLogger(__name__)
 
