@@ -1,5 +1,5 @@
 import sqlite3
-import logging
+import logging_set
 import random
 from session import Card
 
