@@ -9,26 +9,11 @@ class Database:
     def __init__(self):
         self.connection = sqlite3.connect('database.db')
         self.cursor = self.connection.cursor()
-        logger.info("Database table created or already exists.")
 
     def create_db(self):
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY AUTOINCREMENT,word TEXT,translation TEXT, sentence TEXT)""")
         self.connection.commit()
-
-    def create_card(self):
-        self.cursor.execute("SELECT word, translation, sentence FROM words")
-        rows = self.cursor.fetchall()
-        if not rows:
-            logger.warning("No words found in the database to create a card.")
-            print("No words to learn")
-            return None
-            
-        row = random.choice(rows)
-        word = row[0]
-        translation = row[1]
-        sentence = row[2]
-        logger.info(f"Created a card with word: {word}, translation: {translation}")
-        return Card(word, translation, sentence)
+        logger.info("Database table connected.")
 
     def add_card(self, card):
         try:
@@ -40,6 +25,25 @@ class Database:
 
     def get_all_cards(self):
         self.cursor.execute("SELECT word, translation, sentence FROM words")
+        rows = self.cursor.fetchall()
     
-        return self.cursor.fetchall()
-        
+        cards = []
+    
+        for i in rows:
+            word = i[0]
+            translation = i[1]
+            sentence = i[2]
+    
+            card = Card(word, translation, sentence)
+            cards.append(card)
+    
+        return cards
+
+    def create_card(self):
+        cards = self.get_all_cards()
+    
+        if not cards:
+            logger.warning("No words found in the database.")
+            return None
+    
+        return random.choice(cards)
