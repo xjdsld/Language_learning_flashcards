@@ -18,8 +18,13 @@ def menu():
     logger.info(f"User selected {user_choice}")
     try:
        if user_choice == 1:
-            card = database.create_card()
-            if card:
+            cards = database.get_all_cards()
+            if not cards:
+                print("No words to show")
+                
+            random.shuffle(cards)
+            print("======NEW LEARNING SESSION======")
+            for i, card in cards enumerate(cards, start=1)
                 print(f"Word: {card.word}")
                 input("Press Enter to reveal translation...")
                 print(f"Translation: {card.translation}")
