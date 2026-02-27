@@ -37,7 +37,6 @@ def menu():
                     if user_input == "q":
                         print("Exiting learning session...")
                         break
-                    input("Press Enter to reveal translation...")
                     print(f"Translation: {card.translation}")
                     print(f"Example: {card.sentence}")
            elif user_choice == 2:
