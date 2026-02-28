@@ -9,10 +9,12 @@ class Translation():
      url = "https://api.mymemory.translated.net/get"
      params = {"q": word, "langpair": "en|uk"}
      response = requests.get(url, params=params)
-     data = response.json()
-     return data["responseData"]["translatedText"]
-
      if response.status_code != 200:
-      logger.error(f"API returned status {response.status_code}")
-      print("Translation service error.")
-      return None
+       logger.error(f"API returned status {response.status_code}")
+       print("Translation service error.")
+       return None
+     else:
+         data = response.json()
+         return data["responseData"]["translatedText"]
+
+
