@@ -1,4 +1,5 @@
-import logging_set 
+import logging_set
+import logging
 
 logger = logging.getLogger(__name__)
 
@@ -7,5 +8,3 @@ class Card:
         self.word = word
         self.translation = translation
         self.sentence = sentence
-
-  
