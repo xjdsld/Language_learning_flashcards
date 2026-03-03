@@ -1,11 +1,9 @@
-# The most current version is in pycharm/ Do not forget to push/add from pycharm!
-
 import logging_set
 import logging
 import random
 from database import Database
 from session import Card
-from translation_service import Translation
+from translation_service import TranslationService
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +11,7 @@ logger = logging.getLogger(__name__)
 def menu():
     database = Database()
     database.create_db()
-    translator = Translation()
+    translator = TranslationService()
 
     while True:
         print("======Welcome to the Main Menu=======")
@@ -28,6 +26,7 @@ def menu():
                 cards = database.get_all_cards()
                 if not cards:
                     print("No words to show")
+                    continue
 
                 random.shuffle(cards)
                 print("======NEW LEARNING SESSION======")
@@ -49,6 +48,9 @@ def menu():
                         break
                     logger.info(f"Addd a new word {word}")
                     translated_word = translator.translation(word)
+                    if not translated_word:
+                        print("No translation.")
+                        continue
                     sentence = input("Enter example sentence: ")
                     card = Card(word, translated_word, sentence)
                     database.add_card(card)
@@ -56,6 +58,8 @@ def menu():
 
            elif user_choice == 0:
                print("Exiting...")
+               self.connection.close()
+               logging.info("Database connection closed")
                break
 
            else:
