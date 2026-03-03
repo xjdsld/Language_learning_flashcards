@@ -4,7 +4,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class Translation():
+class TranslationService():
     def translation(self, word):
      url = "https://api.mymemory.translated.net/get"
      params = {"q": word, "langpair": "en|uk"}
@@ -16,5 +16,3 @@ class Translation():
      else:
          data = response.json()
          return data["responseData"]["translatedText"]
-
-
