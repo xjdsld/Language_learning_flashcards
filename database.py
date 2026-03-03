@@ -1,6 +1,7 @@
 import sqlite3
 import logging_set
 import random
+import logging
 from session import Card
 
 logger = logging.getLogger(__name__)
@@ -39,11 +40,7 @@ class Database:
     
         return cards
 
-    def create_card(self):
-        cards = self.get_all_cards()
-    
-        if not cards:
-            logger.warning("No words found in the database.")
-            return None
-    
-        return random.choice(cards)
+
+    def close(self):
+        self.connection.close()
+        logger.info("Database connection closed.")
