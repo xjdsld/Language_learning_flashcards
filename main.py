@@ -7,7 +7,6 @@ from translation_service import TranslationService
 
 logger = logging.getLogger(__name__)
 
-
 def menu():
     database = Database()
     database.create_db()
@@ -28,18 +27,43 @@ def menu():
                     print("No words to show")
                     continue
 
+                # random.shuffle(cards)
+                # print("======NEW LEARNING SESSION======")
+
+
+                # for i, card in enumerate(cards, start=1):
+                #     print(f"Word: {card.word}")
+                #     user_input = input("Press Enter to reveal translation or 'q' to quit: ").lower()
+                #     if user_input == "q":
+                #         print("Exiting learning session...")
+                #         break
+                #     print(f"Translation: {card.translation}")
+                #     # print(f"Example: {card.sentence}")
+
                 random.shuffle(cards)
                 print("======NEW LEARNING SESSION======")
-
-
-                for i, card in enumerate(cards, start=1):
-                    print(f"Word: {card.word}")
-                    user_input = input("Press Enter to reveal translation or 'q' to quit: ").lower()
+                
+                while cards:
+                    card = cards.pop(0)
+                
+                    print(f"\nWord: {card.word}")
+                    user_input = input("Press Enter to reveal translation; 'r' = repeat later; 'q' = quit: ").lower()
+                
                     if user_input == "q":
                         print("Exiting learning session...")
                         break
+                
                     print(f"Translation: {card.translation}")
                     print(f"Example: {card.sentence}")
+                
+                    repeat = input("Did you know it? (y/n): ").lower()
+                
+                    if repeat == "n":
+                        print("Card sent back to stack.")
+                        cards.append(card)
+                
+                print("Session finished.")
+            
            elif user_choice == 2:
                while True:
                     word = input("Enter English word (press 'f' to exit): ").lower()
