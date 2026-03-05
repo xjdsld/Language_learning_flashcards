@@ -27,6 +27,7 @@ class Database:
     def get_all_cards(self):
         self.cursor.execute("SELECT word, translation, sentence FROM words")
         rows = self.cursor.fetchall()
+        # The fetchall() method returns a list of tuples, where each tuple represents a row from the database.
     
         cards = []
     
