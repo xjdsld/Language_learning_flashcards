@@ -28,7 +28,8 @@ class Database:
         self.cursor.execute("SELECT word, translation, sentence FROM words")
         rows = self.cursor.fetchall()
         # The fetchall() method returns a list of tuples, where each tuple represents a row from the database.
-    
+
+        # Object mapping (Mapping database rows to objects)
         cards = []
     
         for i in rows:
