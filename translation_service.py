@@ -18,4 +18,5 @@ class TranslationService():
          return data["responseData"]["translatedText"]
 
 # requests.get returns a http object and in data = response.json() we convert the json to a python nested dictionary. 
-So ["responseData"] and ["translatedText"] are two dictionary keys to get the value ["translatedText"]. so
+# So ["responseData"] and ["translatedText"] are two dictionary keys to get the value ["translatedText"]. 
+# So return["responseData"]["translatedText"] returns the translated text.
