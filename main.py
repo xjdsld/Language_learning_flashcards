@@ -1,4 +1,3 @@
-import logging_set
 import logging
 import random
 from database import Database
@@ -47,7 +46,7 @@ def menu():
                     card = cards.pop(0)
                 
                     print(f"\nWord: {card.word}")
-                    user_input = input("Press Enter to reveal translation; 'r' = repeat later; 'q' = quit: ").lower()
+                    user_input = input("'r' = repeat later; 'q' = quit: ").lower()
                 
                     if user_input == "q":
                         print("Exiting learning session...")
