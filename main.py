@@ -46,7 +46,7 @@ def menu():
                     card = cards.pop(0)
                 
                     print(f"\nWord: {card.word}")
-                    user_input = input("Enter = continue;  'r' = repeat later; 'q' = quit: ").lower()
+                    user_input = input("Enter = to reveal translatoin or'q' = quit: ").lower()
                 
                     if user_input == "q":
                         print("Exiting learning session...")
