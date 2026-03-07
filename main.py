@@ -81,7 +81,7 @@ def menu():
 
            elif user_choice == 0:
                print("Exiting...")
-               self.connection.close()
+               database.close()
                logging.info("Database connection closed")
                break
 
