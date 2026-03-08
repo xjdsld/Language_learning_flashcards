@@ -1,5 +1,4 @@
 import sqlite3
-import random
 import logging
 from session import Card
 
